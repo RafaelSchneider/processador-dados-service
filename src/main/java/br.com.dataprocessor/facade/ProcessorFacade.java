@@ -10,7 +10,6 @@ import java.util.function.Function;
 
 public class ProcessorFacade {
 
-
 	private DataInputService dataInputService;
 	private DataOutputService dataOutputService;
 	private InputDataModel inputDataModel;

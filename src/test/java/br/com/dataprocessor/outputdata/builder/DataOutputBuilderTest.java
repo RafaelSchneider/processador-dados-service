@@ -7,7 +7,7 @@ import stub.OutputModelStub;
 public class DataOutputBuilderTest {
 
     @Test
-    public void deveMontarStringParaGravarEmArquivo(){
+    public void shouldMountStringToSaveInFile(){
 
         String out = "3ç3ç2çJonelson";
 

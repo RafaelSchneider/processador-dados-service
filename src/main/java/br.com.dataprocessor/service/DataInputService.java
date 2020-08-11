@@ -12,8 +12,8 @@ import java.util.function.Function;
 public class DataInputService {
 
     public InputDataModel extractor(InputDataModel inputDataModel){
-        for (String arquivo : DataExtractor.listAllFiles()){
-            DataExtractor.extractDataFromArchive(arquivo)
+        for (String file : DataExtractor.listAllFiles()){
+            DataExtractor.extractDataFromArchive(file)
                     .forEach(singleFile-> extractDataByIdentifier(singleFile, inputDataModel));
         }
         return inputDataModel;

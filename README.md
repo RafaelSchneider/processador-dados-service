@@ -4,9 +4,9 @@ Utilizado:
 
 Java 8
 
-Gradle 4.4.1
+Gradle 6.6-rc-3
 
-Lombok 1.16.20
+Lombok 1.18.8
 
 Guava 27.1-jre
 

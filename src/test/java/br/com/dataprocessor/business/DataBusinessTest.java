@@ -3,7 +3,7 @@ package br.com.dataprocessor.business;
 import org.junit.Assert;
 import org.junit.Test;
 import stub.ItemModelStub;
-import stub.VendaModelStub;
+import stub.SaleStub;
 
 import java.math.BigDecimal;
 
@@ -11,21 +11,21 @@ public class DataBusinessTest {
 
 
     @Test
-    public void deveRetornarIdMaiorVenda(){
+    public void shouldReturnIdBiggestSale(){
         Assert.assertTrue(DataBusiness
-                .getIdBiggestSale(VendaModelStub.buildListVendaModelStub()).equals(1L));
+                .getIdBiggestSale(SaleStub.buildListSaleStub()).equals(1L));
     }
 
     @Test
-    public void deveBuscarValorTotalDaVenda(){
+    public void shouldReturnTotalOfSale(){
        Assert.assertTrue(DataBusiness
-               .getTotalSale(ItemModelStub.buildItemModelList())
+               .getTotalSale(ItemModelStub.buildItemList())
                .equals(new BigDecimal(34)));
     }
 
     @Test
-    public void deveBuscarNomePiorVendedor(){
+    public void shouldReturnNameOfWorstSalesman(){
         Assert.assertTrue(DataBusiness
-                .getNameOfWorstSalesman(VendaModelStub.buildListVendaModelStub()).equals("Jonelson"));
+                .getNameOfWorstSalesman(SaleStub.buildListSaleStub()).equals("Jonelson"));
     }
 }

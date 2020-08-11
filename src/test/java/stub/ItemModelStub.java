@@ -8,11 +8,11 @@ import java.util.List;
 
 public class ItemModelStub {
 
-    public static List<ItemModel> buildItemModelList(){
-        return Arrays.asList(buildItemNumeroUm(), buildItemNumeroDois(), buildItemNumeroTres());
+    public static List<ItemModel> buildItemList(){
+        return Arrays.asList(buildItemNumberOne(), buildItemNumberTwo(), buildItemNumberThree());
     }
 
-    public static ItemModel buildItemNumeroUm(){
+    public static ItemModel buildItemNumberOne(){
         return ItemModel.builder()
                 .price(new BigDecimal(10))
                 .quantity(2)
@@ -20,7 +20,7 @@ public class ItemModelStub {
                 .build();
     }
 
-    public static ItemModel buildItemNumeroDois(){
+    public static ItemModel buildItemNumberTwo(){
         return ItemModel.builder()
                 .idItem(2L)
                 .quantity(1)
@@ -28,7 +28,7 @@ public class ItemModelStub {
                 .build();
     }
 
-    private static ItemModel buildItemNumeroTres(){
+    private static ItemModel buildItemNumberThree(){
         return ItemModel.builder()
                 .idItem(3L)
                 .quantity(1)
