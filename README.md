@@ -41,17 +41,17 @@ O seguinte é um exemplo dos dados que o sistema deve ser capaz de ler.
 003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro
 003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo
 
-Análise de dados
-Seu sistema deve ler dados do diretório padrão, localizado em% HOMEPATH% /
-data / in.
-O sistema deve ler somente arquivos .dat.
-Depois de processar todos os arquivos dentro do diretório padrão de entrada, o
-sistema deve criar um arquivo dentro do diretório de saída padrão, localizado em%
-HOMEPATH% /data/out.
-O nome do arquivo deve seguir o padrão, {flat_file_name} .done.dat.
-O conteúdo do arquivo de saída deve resumir os seguintes dados:
-● Quantidade de clientes no arquivo de entrada
-● Quantidade de vendedor no arquivo de entrada
-● ID da venda mais cara
-● O pior vendedor
-O sistema deve estar funcionando o tempo todo.
+sistema deverá ler continuamente todos os arquivos dentro do diretório padrão
+HOMEPATH/data/in e colocar o arquivo de saída em HOMEPATH/data/out.
+No arquivo de saída o sistema deverá possuir os seguintes dados:
+• Quantidade de clientes no arquivo de entrada
+• Quantidade de vendedores no arquivo de entrada
+• ID da venda mais cara•
+O pior vendedor
+Requisitos técnicos
+
+
+O sistema deve rodar continuamente e capturar novos arquivos assim que eles sejam
+inseridos no diretório padrão.
+Você tem total liberdade para escolher qualquer biblioteca externa se achar
+necessário.
