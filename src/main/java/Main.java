@@ -8,7 +8,6 @@ import java.nio.file.StandardWatchEventKinds;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
-import java.util.Calendar;
 
 public class Main {
 
@@ -19,7 +18,7 @@ public class Main {
             WatchService watchService = FileSystems.getDefault().newWatchService();
 
             ProcessorFacade processor = new ProcessorFacade();
-            processor.processaDados();
+            processor.process();
 
             path.register(
                     watchService,
@@ -30,7 +29,7 @@ public class Main {
 
             while ((key = watchService.take()) != null) {
                 for (WatchEvent<?> event : key.pollEvents()) {
-                    processor.processaDados();
+                    processor.process();
                     System.out.println(
                             "Event kind:" + event.kind()
                                     + ". File affected: " + event.context() + ".");

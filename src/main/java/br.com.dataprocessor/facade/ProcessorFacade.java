@@ -23,25 +23,25 @@ public class ProcessorFacade {
 		outputDataModel = new OutputDataModel();
 
 	}
-	public void processaDados(){
+	public void process(){
 
-		extrairDados()
-				.andThen(processarDados(outputDataModel))
-				.andThen(gravarDados())
+		extractInputData()
+				.andThen(processToOutputData(outputDataModel))
+				.andThen(saveOutputData())
 				.apply(inputDataModel);
 	}
 
-	private Function<InputDataModel, InputDataModel> extrairDados(){
+	private Function<InputDataModel, InputDataModel> extractInputData(){
 		return (InputDataModel inputDataModel)->
 				dataInputService.extractor(inputDataModel);
 	}
 
-	private Function<InputDataModel, OutputDataModel> processarDados(OutputDataModel outputDataModel){
+	private Function<InputDataModel, OutputDataModel> processToOutputData(OutputDataModel outputDataModel){
 		return (InputDataModel inputDataModel) ->
-			dataOutputService.processaSaida(outputDataModel, inputDataModel);
+			dataOutputService.processOutput(outputDataModel, inputDataModel);
 	}
 
-	private Function<OutputDataModel, OutputDataModel> gravarDados(){
+	private Function<OutputDataModel, OutputDataModel> saveOutputData(){
 		return (OutputDataModel outputDataModel)->
 				dataOutputService.save(outputDataModel);
 	}

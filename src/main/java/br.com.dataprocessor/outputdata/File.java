@@ -4,12 +4,12 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class SaveFile {
+public class File {
 
     private static String outputFile = System.getProperty("user.home")
-            .concat("/data/out/out.done.dat");
+            .concat("/data/out/saida.txt");
 
-    public static void saveFile(String data) throws IOException {
+    public static void save(String data) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
         writer.write(data);

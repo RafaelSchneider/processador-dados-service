@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,6 @@ public class DataExtractor {
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
         return stream;
     }
@@ -30,7 +30,7 @@ public class DataExtractor {
         try {
 
             return  Files.walk(Paths.get( System.getProperty("user.home").concat("/data/in")))
-                    .map(path -> path.toString())
+                    .map(Path::toString)
                     .filter(path -> ! path.endsWith("/in"))
                     .collect(Collectors.toList());
 

@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class ItemModelBuilder {
 
     public static List<ItemModel> buildListItens(String data){
-        data = ProcessorUtils.removeColchetes(data);
-        List<String> resultList = ProcessorUtils.slitLine(data, ',');
+        data = ProcessorUtils.removeSquareBrackets(data);
+        List<String> resultList = ProcessorUtils.splitLine(data, ',');
 
         return resultList.stream()
                     .map(ItemModelBuilder::buildItemModel)
@@ -19,12 +19,12 @@ public class ItemModelBuilder {
     }
 
     private static ItemModel buildItemModel(String data){
-        List<String> resultList = ProcessorUtils.slitLine(data, '-');
+        List<String> resultList = ProcessorUtils.splitLine(data, '-');
 
         return ItemModel.builder()
                 .idItem(Long.parseLong(resultList.get(0)))
-                .quantidade(Integer.parseInt(resultList.get(1)))
-                .valor(new BigDecimal(resultList.get(2)))
+                .quantity(Integer.parseInt(resultList.get(1)))
+                .price(new BigDecimal(resultList.get(2)))
                 .build();
     }
 

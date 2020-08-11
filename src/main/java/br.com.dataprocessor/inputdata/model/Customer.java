@@ -5,14 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VendedorModel {
-    private String cpf;
-    private String nome;
-    private BigDecimal salario;
+public class Customer {
+    private String cnpj;
+    private String name;
+    private String businessArea;
 }

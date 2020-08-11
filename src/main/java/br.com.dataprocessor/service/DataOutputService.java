@@ -1,11 +1,11 @@
 package br.com.dataprocessor.service;
 
 import br.com.dataprocessor.business.DataBusiness;
-import br.com.dataprocessor.inputdata.model.ClienteModel;
+import br.com.dataprocessor.inputdata.model.Customer;
 import br.com.dataprocessor.inputdata.model.InputDataModel;
-import br.com.dataprocessor.inputdata.model.VendaModel;
-import br.com.dataprocessor.inputdata.model.VendedorModel;
-import br.com.dataprocessor.outputdata.SaveFile;
+import br.com.dataprocessor.inputdata.model.Sale;
+import br.com.dataprocessor.inputdata.model.Salesman;
+import br.com.dataprocessor.outputdata.File;
 import br.com.dataprocessor.outputdata.builder.DataOutputBuilder;
 import br.com.dataprocessor.outputdata.model.OutputDataModel;
 
@@ -15,46 +15,46 @@ import java.util.function.UnaryOperator;
 
 public class DataOutputService {
 
-    public OutputDataModel processaSaida(OutputDataModel outputDataModel, InputDataModel inputDataModel){
+    public OutputDataModel processOutput(OutputDataModel outputDataModel, InputDataModel inputDataModel){
 
-            return buscarTotalClientes(inputDataModel.getClientes())
-                    .andThen(buscarTotalVendedores(inputDataModel.getVendedores()))
-                    .andThen(buscarMaiorVenda(inputDataModel.getVendas()))
-                    .andThen(buscarPiorVendedor(inputDataModel.getVendas()))
+            return getTotalClients(inputDataModel.getCustomers())
+                    .andThen(getTotalSalesman(inputDataModel.getSalesmen()))
+                    .andThen(getBiggestSale(inputDataModel.getSales()))
+                    .andThen(getWorstSalesman(inputDataModel.getSales()))
                     .apply(outputDataModel);
     }
 
-    private UnaryOperator<OutputDataModel> buscarTotalClientes(List<ClienteModel> clientes){
+    private UnaryOperator<OutputDataModel> getTotalClients(List<Customer> customers){
         return (OutputDataModel outputDataModel) ->{
-            outputDataModel.setQuantidadeCliente(clientes.size());
+            outputDataModel.setCustomerQuantity(customers.size());
             return outputDataModel;
         };
     }
 
-    private UnaryOperator<OutputDataModel> buscarTotalVendedores(List<VendedorModel> vendedores){
+    private UnaryOperator<OutputDataModel> getTotalSalesman(List<Salesman> salesmen){
         return (OutputDataModel outputDataModel) -> {
-            outputDataModel.setQuantidadeVendedores(vendedores.size());
+            outputDataModel.setSalesmanQuantity(salesmen.size());
             return outputDataModel;
         };
     }
 
-    private UnaryOperator<OutputDataModel> buscarMaiorVenda(List<VendaModel> vendas){
+    private UnaryOperator<OutputDataModel> getBiggestSale(List<Sale> sales){
         return (OutputDataModel outputDataModel) -> {
-            outputDataModel.setIdVendaMaisCara(DataBusiness.buscarIdMaiorVenda(vendas));
+            outputDataModel.setIdBiggestSale(DataBusiness.getIdBiggestSale(sales));
             return outputDataModel;
         };
     }
 
-    private UnaryOperator<OutputDataModel> buscarPiorVendedor(List<VendaModel> vendas){
+    private UnaryOperator<OutputDataModel> getWorstSalesman(List<Sale> sales){
         return (OutputDataModel outputDataModel) -> {
-            outputDataModel.setNomePiorVendedor(DataBusiness.buscarNomePiorVendedor(vendas));
+            outputDataModel.setNameWorstSalesman(DataBusiness.getNameOfWorstSalesman(sales));
             return outputDataModel;
         };
     }
 
     public OutputDataModel save(OutputDataModel outputDataModel){
         try {
-            SaveFile.saveFile(DataOutputBuilder.buildStringToSave(outputDataModel));
+            File.save(DataOutputBuilder.buildStringToSave(outputDataModel));
         } catch (IOException e) {
             e.printStackTrace();
         }

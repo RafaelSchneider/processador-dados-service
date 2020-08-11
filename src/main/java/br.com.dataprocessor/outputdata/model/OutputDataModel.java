@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OutputDataModel {
-    private Integer quantidadeCliente;
-    private Integer quantidadeVendedores;
-    private Long idVendaMaisCara;
-    private String nomePiorVendedor;
+    private Integer customerQuantity;
+    private Integer salesmanQuantity;
+    private Long idBiggestSale;
+    private String nameWorstSalesman;
 }

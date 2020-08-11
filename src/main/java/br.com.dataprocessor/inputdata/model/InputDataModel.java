@@ -11,13 +11,13 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class InputDataModel {
-    private List<ClienteModel> clientes;
-    private List<VendaModel> vendas;
-    private List<VendedorModel> vendedores;
+    private List<Customer> customers;
+    private List<Sale> sales;
+    private List<Salesman> salesmen;
 
     public InputDataModel(){
-        clientes = new ArrayList<>();
-        vendas = new ArrayList<>();
-        vendedores = new ArrayList<>();
+        customers = new ArrayList<>();
+        sales = new ArrayList<>();
+        salesmen = new ArrayList<>();
     }
 }

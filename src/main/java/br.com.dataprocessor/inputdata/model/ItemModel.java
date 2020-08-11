@@ -13,8 +13,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ItemModel {
     private Long idItem;
-    private Integer quantidade;
-    private BigDecimal valor;
+    private Integer quantity;
+    private BigDecimal price;
 
 
 }

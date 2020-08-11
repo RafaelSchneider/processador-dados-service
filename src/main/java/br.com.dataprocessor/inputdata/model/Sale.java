@@ -13,10 +13,10 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class VendaModel {
-    private Long idVenda;
-    private List<ItemModel> itens;
-    private String vendedorNome;
-    private BigDecimal valorTotal;
+public class Sale {
+    private Long idSale;
+    private List<ItemModel> items;
+    private String salesmanName;
+    private BigDecimal total;
 
 }

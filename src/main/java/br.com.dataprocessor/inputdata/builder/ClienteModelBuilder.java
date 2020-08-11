@@ -1,18 +1,18 @@
 package br.com.dataprocessor.inputdata.builder;
 
-import br.com.dataprocessor.inputdata.model.ClienteModel;
+import br.com.dataprocessor.inputdata.model.Customer;
 import br.com.dataprocessor.inputdata.util.ProcessorUtils;
 
 import java.util.List;
 
 public class ClienteModelBuilder {
 
-    public static ClienteModel clienteBuilder(String data){
-        List<String> resultList = ProcessorUtils.slitLine(data, 'ç');
-        return ClienteModel.builder()
+    public static Customer clienteBuilder(String data){
+        List<String> resultList = ProcessorUtils.splitLine(data, 'ç');
+        return Customer.builder()
                 .cnpj(resultList.get(1))
-                .nome(resultList.get(2))
-                .areaAtuacao(resultList.get(3))
+                .name(resultList.get(2))
+                .businessArea(resultList.get(3))
                 .build();
     }
 }

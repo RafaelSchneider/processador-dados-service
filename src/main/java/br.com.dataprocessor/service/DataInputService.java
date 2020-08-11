@@ -5,62 +5,54 @@ import br.com.dataprocessor.inputdata.builder.VendaModelBuilder;
 import br.com.dataprocessor.inputdata.builder.VendedorModelBuilder;
 import br.com.dataprocessor.inputdata.extractor.DataExtractor;
 import br.com.dataprocessor.inputdata.model.InputDataModel;
+import br.com.dataprocessor.type.IdentifierEnum;
 
 import java.util.function.Function;
 
 public class DataInputService {
 
-    /**
-     * TODO
-     * PASSAR PARA ENUM
-     *
-     * */
-    private static final String IDENTIFICADOR_VENDEDOR = "001";
-    private static final String IDENTIFICADOR_CLIENTE = "002";
-    private static final String IDENTIFICADOR_VENDA = "003";
-
     public InputDataModel extractor(InputDataModel inputDataModel){
         for (String arquivo : DataExtractor.listAllFiles()){
             DataExtractor.extractDataFromArchive(arquivo)
-                    .forEach(singleFile-> extrairDadosPorIdentificador(singleFile, inputDataModel));
+                    .forEach(singleFile-> extractDataByIdentifier(singleFile, inputDataModel));
         }
         return inputDataModel;
     }
 
-    private void extrairDadosPorIdentificador(String data, InputDataModel inputDataModel){
-                extrairVendedor(data)
-                        .andThen(extrairCliente(data))
-                        .andThen(extrairVenda(data))
+    private void extractDataByIdentifier(String data, InputDataModel inputDataModel){
+                extractSalesman(data)
+                        .andThen(extractCustomer(data))
+                        .andThen(extractSales(data))
                         .apply(inputDataModel);
     }
 
-    private Function<InputDataModel, InputDataModel> extrairVendedor(String data){
+    private Function<InputDataModel, InputDataModel> extractSalesman(String data){
         return (InputDataModel inputDataModel) -> {
-            if (data.startsWith(IDENTIFICADOR_VENDEDOR)){
+            if (data.startsWith(IdentifierEnum.SALESMAN.identifier)){
                 inputDataModel
-                        .getVendedores()
+                        .getSalesmen()
                         .add(VendedorModelBuilder.vendedorModelBuider(data));
             }
             return inputDataModel;
         };
     }
 
-    private Function<InputDataModel, InputDataModel> extrairCliente(String data){
+    private Function<InputDataModel, InputDataModel> extractCustomer(String data){
         return (InputDataModel inputDataModel) -> {
-            if (data.startsWith(IDENTIFICADOR_CLIENTE)){
+            if (data.startsWith(IdentifierEnum.CUSTOMER.identifier)){
                 inputDataModel
-                        .getClientes()
+                        .getCustomers()
                         .add(ClienteModelBuilder.clienteBuilder(data));
             }
             return inputDataModel;
         };
     }
 
-    private Function< InputDataModel, InputDataModel> extrairVenda(String data){
+    private Function< InputDataModel, InputDataModel> extractSales(String data){
         return (InputDataModel inputDataModel)-> {
-            if (data.startsWith(IDENTIFICADOR_VENDA)) {
+            if (data.startsWith(IdentifierEnum.SALE.identifier)) {
                   inputDataModel
-                         .getVendas()
+                         .getSales()
                          .add(VendaModelBuilder.vendaBuilder(data));
             }
             return inputDataModel;

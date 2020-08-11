@@ -6,10 +6,10 @@ public class OutputModelStub {
 
     public static OutputDataModel buildOutputModel(){
         return OutputDataModel.builder()
-                .idVendaMaisCara(2L)
-                .nomePiorVendedor("Jonelson")
-                .quantidadeCliente(3)
-                .quantidadeVendedores(3)
+                .idBiggestSale(2L)
+                .nameWorstSalesman("Jonelson")
+                .customerQuantity(3)
+                .salesmanQuantity(3)
                 .build();
     }
 }

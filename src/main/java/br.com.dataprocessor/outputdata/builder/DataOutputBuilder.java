@@ -4,12 +4,14 @@ import br.com.dataprocessor.outputdata.model.OutputDataModel;
 
 public class DataOutputBuilder {
 
+    private static final String SEPARATOR = "ç";
+
     public static String buildStringToSave(OutputDataModel outputDataModel){
         StringBuilder sb = new StringBuilder();
-        sb.append(outputDataModel.getQuantidadeCliente().toString()).append("ç");
-        sb.append(outputDataModel.getQuantidadeVendedores()).append("ç");
-        sb.append(outputDataModel.getIdVendaMaisCara()).append("ç");
-        sb.append(outputDataModel.getNomePiorVendedor());
+        sb.append(outputDataModel.getCustomerQuantity().toString()).append(SEPARATOR);
+        sb.append(outputDataModel.getSalesmanQuantity()).append(SEPARATOR);
+        sb.append(outputDataModel.getIdBiggestSale()).append(SEPARATOR);
+        sb.append(outputDataModel.getNameWorstSalesman());
         return sb.toString();
     }
 }
