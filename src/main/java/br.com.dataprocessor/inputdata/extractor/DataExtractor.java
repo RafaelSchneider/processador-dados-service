@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public class DataExtractor {
 
-    public static Stream<String> extractDataFromArchive(String inputPath) {
+    public static Stream<String> extractDataFromFile(String inputPath) {
         Stream<String> stream = null;
         try {
 

@@ -18,7 +18,7 @@ public class DataInputService {
 
     public InputData extractor(InputData inputData){
         for (String file : DataExtractor.listAllFiles()){
-            DataExtractor.extractDataFromArchive(file)
+            DataExtractor.extractDataFromFile(file)
                     .forEach(singleFile-> extractDataByIdentifier(singleFile, inputData));
         }
         return inputData;
