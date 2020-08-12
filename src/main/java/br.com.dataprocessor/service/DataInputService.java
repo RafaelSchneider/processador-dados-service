@@ -1,15 +1,20 @@
 package br.com.dataprocessor.service;
 
-import br.com.dataprocessor.inputdata.builder.CustomerBuilder;
-import br.com.dataprocessor.inputdata.builder.VendaModelBuilder;
-import br.com.dataprocessor.inputdata.builder.VendedorModelBuilder;
 import br.com.dataprocessor.inputdata.extractor.DataExtractor;
 import br.com.dataprocessor.inputdata.model.InputData;
-import br.com.dataprocessor.type.IdentifierEnum;
-
-import java.util.function.Function;
 
 public class DataInputService {
+
+    private SalesmanService salesmanService;
+    private CustomerService customerService;
+    private SalesService salesService;
+
+    public DataInputService() {
+        this.salesmanService = new SalesmanService();
+        this.customerService = new CustomerService();
+        this.salesService = new SalesService();
+
+    }
 
     public InputData extractor(InputData inputData){
         for (String file : DataExtractor.listAllFiles()){
@@ -20,42 +25,9 @@ public class DataInputService {
     }
 
     private void extractDataByIdentifier(String data, InputData inputData){
-                extractSalesman(data)
-                        .andThen(extractCustomer(data))
-                        .andThen(extractSales(data))
+        salesmanService.extractSalesman(data)
+                        .andThen(customerService.extractCustomer(data))
+                        .andThen(salesService.extractSales(data))
                         .apply(inputData);
-    }
-
-    private Function<InputData, InputData> extractSalesman(String data){
-        return (InputData inputData) -> {
-            if (data.startsWith(IdentifierEnum.SALESMAN.identifier)){
-                inputData
-                        .getSalesmen()
-                        .add(VendedorModelBuilder.vendedorModelBuider(data));
-            }
-            return inputData;
-        };
-    }
-
-    private Function<InputData, InputData> extractCustomer(String data){
-        return (InputData inputData) -> {
-            if (data.startsWith(IdentifierEnum.CUSTOMER.identifier)){
-                inputData
-                        .getCustomers()
-                        .add(CustomerBuilder.build(data));
-            }
-            return inputData;
-        };
-    }
-
-    private Function<InputData, InputData> extractSales(String data){
-        return (InputData inputData)-> {
-            if (data.startsWith(IdentifierEnum.SALE.identifier)) {
-                  inputData
-                         .getSales()
-                         .add(VendaModelBuilder.vendaBuilder(data));
-            }
-            return inputData;
-        };
     }
 }
