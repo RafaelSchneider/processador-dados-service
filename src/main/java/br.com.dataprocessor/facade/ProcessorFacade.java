@@ -23,7 +23,7 @@ public class ProcessorFacade {
 
 	}
 	public void process(){
-
+		dataInputService.clearList(inputData);
 		extractInputData()
 				.andThen(processToOutputData(outputData))
 				.andThen(saveOutputData())

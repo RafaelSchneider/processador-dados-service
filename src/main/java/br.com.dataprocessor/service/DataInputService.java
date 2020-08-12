@@ -30,4 +30,10 @@ public class DataInputService {
                         .andThen(salesService.extractSales(data))
                         .apply(inputData);
     }
+
+    public void clearList(InputData inputData){
+        inputData.getCustomers().clear();
+        inputData.getSales().clear();
+        inputData.getSalesmen().clear();
+    }
 }

@@ -34,6 +34,7 @@ public class Main {
                             "Event kind:" + event.kind()
                                     + ". File affected: " + event.context() + ".");
                 }
+
                 key.reset();
             }
         } catch (IOException | InterruptedException e) {
