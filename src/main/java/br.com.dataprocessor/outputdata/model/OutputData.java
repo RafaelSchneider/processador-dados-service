@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OutputDataModel {
+public class OutputData {
     private Integer customerQuantity;
     private Integer salesmanQuantity;
     private Long idBiggestSale;

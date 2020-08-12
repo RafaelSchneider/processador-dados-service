@@ -1,6 +1,6 @@
 package br.com.dataprocessor.business;
 
-import br.com.dataprocessor.inputdata.model.ItemModel;
+import br.com.dataprocessor.inputdata.model.Item;
 import br.com.dataprocessor.inputdata.model.Sale;
 
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ public class DataBusiness {
 
     }
 
-    public static BigDecimal getTotalSale(List<ItemModel> items){
+    public static BigDecimal getTotalSale(List<Item> items){
         return items.stream()
                 .map(item -> item.getPrice().multiply(new BigDecimal(item.getQuantity())))
                 .reduce(BigDecimal::add)

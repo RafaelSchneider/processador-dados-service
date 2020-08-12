@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-public class InputDataModel {
+public class InputData {
     private List<Customer> customers;
     private List<Sale> sales;
     private List<Salesman> salesmen;
 
-    public InputDataModel(){
+    public InputData(){
         customers = new ArrayList<>();
         sales = new ArrayList<>();
         salesmen = new ArrayList<>();

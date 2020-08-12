@@ -13,9 +13,9 @@ public class VendaModelBuilder {
 
         return Sale.builder()
                 .idSale(Long.parseLong(resultList.get(1)))
-                .items(ItemModelBuilder.buildListItens(resultList.get(2)))
+                .items(ItemBuilder.buildListItems(resultList.get(2)))
                 .salesmanName(resultList.get(3))
-                .total(DataBusiness.getTotalSale(ItemModelBuilder.buildListItens(resultList.get(2))))
+                .total(DataBusiness.getTotalSale(ItemBuilder.buildListItems(resultList.get(2))))
                 .build();
     }
 }

@@ -1,11 +1,11 @@
 package stub;
 
-import br.com.dataprocessor.outputdata.model.OutputDataModel;
+import br.com.dataprocessor.outputdata.model.OutputData;
 
 public class OutputModelStub {
 
-    public static OutputDataModel buildOutputModel(){
-        return OutputDataModel.builder()
+    public static OutputData buildOutputModel(){
+        return OutputData.builder()
                 .idBiggestSale(2L)
                 .nameWorstSalesman("Jonelson")
                 .customerQuantity(3)

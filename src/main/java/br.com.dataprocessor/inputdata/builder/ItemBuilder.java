@@ -1,27 +1,27 @@
 package br.com.dataprocessor.inputdata.builder;
 
-import br.com.dataprocessor.inputdata.model.ItemModel;
+import br.com.dataprocessor.inputdata.model.Item;
 import br.com.dataprocessor.inputdata.util.ProcessorUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ItemModelBuilder {
+public class ItemBuilder {
 
-    public static List<ItemModel> buildListItens(String data){
+    public static List<Item> buildListItems(String data){
         data = ProcessorUtils.removeSquareBrackets(data);
         List<String> resultList = ProcessorUtils.splitLine(data, ',');
 
         return resultList.stream()
-                    .map(ItemModelBuilder::buildItemModel)
+                    .map(ItemBuilder::buildItemModel)
                     .collect(Collectors.toList());
     }
 
-    private static ItemModel buildItemModel(String data){
+    private static Item buildItemModel(String data){
         List<String> resultList = ProcessorUtils.splitLine(data, '-');
 
-        return ItemModel.builder()
+        return Item.builder()
                 .idItem(Long.parseLong(resultList.get(0)))
                 .quantity(Integer.parseInt(resultList.get(1)))
                 .price(new BigDecimal(resultList.get(2)))

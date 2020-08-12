@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Sale {
     private Long idSale;
-    private List<ItemModel> items;
+    private List<Item> items;
     private String salesmanName;
     private BigDecimal total;
 

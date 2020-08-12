@@ -1,7 +1,7 @@
 package br.com.dataprocessor.facade;
 
-import br.com.dataprocessor.inputdata.model.InputDataModel;
-import br.com.dataprocessor.outputdata.model.OutputDataModel;
+import br.com.dataprocessor.inputdata.model.InputData;
+import br.com.dataprocessor.outputdata.model.OutputData;
 import br.com.dataprocessor.service.DataInputService;
 import br.com.dataprocessor.service.DataOutputService;
 
@@ -12,37 +12,37 @@ public class ProcessorFacade {
 
 	private DataInputService dataInputService;
 	private DataOutputService dataOutputService;
-	private InputDataModel inputDataModel;
-	private OutputDataModel outputDataModel;
+	private InputData inputData;
+	private OutputData outputData;
 
 	public ProcessorFacade(){
 		dataInputService = new DataInputService();
 		dataOutputService = new DataOutputService();
-		inputDataModel = new InputDataModel();
-		outputDataModel = new OutputDataModel();
+		inputData = new InputData();
+		outputData = new OutputData();
 
 	}
 	public void process(){
 
 		extractInputData()
-				.andThen(processToOutputData(outputDataModel))
+				.andThen(processToOutputData(outputData))
 				.andThen(saveOutputData())
-				.apply(inputDataModel);
+				.apply(inputData);
 	}
 
-	private Function<InputDataModel, InputDataModel> extractInputData(){
-		return (InputDataModel inputDataModel)->
-				dataInputService.extractor(inputDataModel);
+	private Function<InputData, InputData> extractInputData(){
+		return (InputData inputData)->
+				dataInputService.extractor(inputData);
 	}
 
-	private Function<InputDataModel, OutputDataModel> processToOutputData(OutputDataModel outputDataModel){
-		return (InputDataModel inputDataModel) ->
-			dataOutputService.processOutput(outputDataModel, inputDataModel);
+	private Function<InputData, OutputData> processToOutputData(OutputData outputData){
+		return (InputData inputData) ->
+			dataOutputService.processOutput(outputData, inputData);
 	}
 
-	private Function<OutputDataModel, OutputDataModel> saveOutputData(){
-		return (OutputDataModel outputDataModel)->
-				dataOutputService.save(outputDataModel);
+	private Function<OutputData, OutputData> saveOutputData(){
+		return (OutputData outputData)->
+				dataOutputService.save(outputData);
 	}
 }
  

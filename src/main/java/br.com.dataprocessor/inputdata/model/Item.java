@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemModel {
+public class Item {
     private Long idItem;
     private Integer quantity;
     private BigDecimal price;

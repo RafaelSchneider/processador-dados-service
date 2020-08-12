@@ -5,9 +5,9 @@ import br.com.dataprocessor.inputdata.util.ProcessorUtils;
 
 import java.util.List;
 
-public class ClienteModelBuilder {
+public class CustomerBuilder {
 
-    public static Customer clienteBuilder(String data){
+    public static Customer build(String data){
         List<String> resultList = ProcessorUtils.splitLine(data, 'ç');
         return Customer.builder()
                 .cnpj(resultList.get(1))
