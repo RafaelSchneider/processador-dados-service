@@ -31,7 +31,7 @@ public class DataExtractor {
             return  Files.walk(Paths.get( System.getProperty("user.home").concat("/data/in")))
                     .map(Path::toString)
                     .filter(path -> ! path.endsWith("/in"))
-                    .filter(path -> ! path.startsWith(LINUX_TEMP_FILES))
+                    .filter(path -> ! path.contains(LINUX_TEMP_FILES))
                     .collect(Collectors.toList());
 
         } catch (IOException e) {

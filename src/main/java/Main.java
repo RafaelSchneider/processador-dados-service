@@ -1,4 +1,4 @@
-import br.com.dataprocessor.facade.ProcessorFacade;
+import br.com.dataprocessor.service.Starter;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -16,9 +16,8 @@ public class Main {
 
         try {
             WatchService watchService = FileSystems.getDefault().newWatchService();
-
-            ProcessorFacade processor = new ProcessorFacade();
-            processor.process();
+            Starter starter = new Starter();
+            starter.start();
 
             path.register(
                     watchService,
@@ -29,7 +28,7 @@ public class Main {
 
             while ((key = watchService.take()) != null) {
                 for (WatchEvent<?> event : key.pollEvents()) {
-                    processor.process();
+                    starter.start();
                     System.out.println(
                             "Event kind:" + event.kind()
                                     + ". File affected: " + event.context() + ".");

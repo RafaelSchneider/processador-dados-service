@@ -22,7 +22,7 @@ public class DataOutputService {
     }
 
     public OutputData processOutput(OutputData outputData, InputData inputData){
-
+            outputData.setFileName(inputData.getFileName());
             return getTotalCustomers(inputData.getCustomers())
                     .andThen(getTotalSalesman(inputData.getSalesmen()))
                     .andThen(salesService.getBiggestSale(inputData.getSales()))
@@ -46,7 +46,7 @@ public class DataOutputService {
 
     public OutputData save(OutputData outputData){
         try {
-            File.save(DataOutputBuilder.buildStringToSave(outputData));
+            File.save(DataOutputBuilder.buildStringToSave(outputData), outputData.getFileName());
         } catch (IOException e) {
             e.printStackTrace();
         }

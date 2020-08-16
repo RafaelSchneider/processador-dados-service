@@ -4,9 +4,10 @@ import br.com.dataprocessor.inputdata.model.InputData;
 import br.com.dataprocessor.outputdata.model.OutputData;
 import br.com.dataprocessor.service.DataInputService;
 import br.com.dataprocessor.service.DataOutputService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.function.Function;
-
 
 public class ProcessorFacade {
 
@@ -15,6 +16,8 @@ public class ProcessorFacade {
 	private InputData inputData;
 	private OutputData outputData;
 
+    private static final Logger logger = LoggerFactory.getLogger(ProcessorFacade.class);
+
 	public ProcessorFacade(){
 		dataInputService = new DataInputService();
 		dataOutputService = new DataOutputService();
@@ -22,22 +25,31 @@ public class ProcessorFacade {
 		outputData = new OutputData();
 
 	}
-	public void process(){
+
+	public void process(String file){
 		dataInputService.clearList(inputData);
-		extractInputData()
+		extractInputData(file)
 				.andThen(processToOutputData(outputData))
 				.andThen(saveOutputData())
 				.apply(inputData);
 	}
 
-	private Function<InputData, InputData> extractInputData(){
-		return (InputData inputData)->
-				dataInputService.extractor(inputData);
+
+	private Function<InputData, InputData> extractInputData(String file){
+		return (InputData inputData)-> {
+			logger.info("Extracting file: " + file);
+			dataInputService.extractor(inputData, file);
+			return inputData;
+		};
 	}
 
 	private Function<InputData, OutputData> processToOutputData(OutputData outputData){
-		return (InputData inputData) ->
+		return (InputData inputData) -> {
+			logger.info("Will start process to output");
+			logger.info(inputData.toString());
 			dataOutputService.processOutput(outputData, inputData);
+			return outputData;
+		};
 	}
 
 	private Function<OutputData, OutputData> saveOutputData(){

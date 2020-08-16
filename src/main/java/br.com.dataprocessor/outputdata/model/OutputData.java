@@ -14,4 +14,5 @@ public class OutputData {
     private Integer salesmanQuantity;
     private Long idBiggestSale;
     private String nameWorstSalesman;
+    private String fileName;
 }
