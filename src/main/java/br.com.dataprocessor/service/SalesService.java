@@ -16,7 +16,7 @@ public class SalesService {
     public Function<InputData, InputData> extractSales(String data){
         return (InputData inputData)-> {
             if (data.startsWith(IdentifierEnum.SALE.identifier)) {
-                inputData
+                    inputData
                         .getSales()
                         .add(VendaModelBuilder.saleBuilder(data));
             }

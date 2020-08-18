@@ -2,7 +2,7 @@ package br.com.dataprocessor.service;
 
 import br.com.dataprocessor.inputdata.extractor.DataExtractor;
 import br.com.dataprocessor.inputdata.model.InputData;
-import br.com.dataprocessor.inputdata.util.ProcessorUtils;
+import br.com.dataprocessor.util.ProcessorUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

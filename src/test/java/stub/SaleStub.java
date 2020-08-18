@@ -3,6 +3,7 @@ package stub;
 import br.com.dataprocessor.inputdata.model.Sale;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,4 +38,23 @@ public class SaleStub {
                 .salesmanName("Jonelson")
                 .build();
     }
+
+    public static List<Sale> buildListSaleOFFile(){
+        List<Sale> sales = new ArrayList<>();
+        sales.add(Sale.builder()
+                .idSale(4l)
+                .items(ItemModelStub.buildItemListOfSale04())
+                .salesmanName("Laudelino")
+                .total(BigDecimal.ZERO)
+                .build());
+        sales.add(Sale.builder()
+                .idSale(5l)
+                .items(ItemModelStub.buildItemListOfSale05())
+                .salesmanName("Jonelson II")
+                .total(BigDecimal.TEN)
+                .build());
+        return sales;
+    }
+
+
 }

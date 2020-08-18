@@ -19,12 +19,13 @@ public class ProcessorFacade {
     private static final Logger logger = LoggerFactory.getLogger(ProcessorFacade.class);
 
 	public ProcessorFacade(){
-		dataInputService = new DataInputService();
-		dataOutputService = new DataOutputService();
-		inputData = new InputData();
-		outputData = new OutputData();
-
+		this.dataInputService = new DataInputService();
+		this.dataOutputService = new DataOutputService();
+		this.inputData = new InputData();
+		this.outputData = new OutputData();
 	}
+
+
 
 	public void process(String file){
 		dataInputService.clearList(inputData);

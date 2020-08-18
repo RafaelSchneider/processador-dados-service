@@ -1,4 +1,4 @@
-package br.com.dataprocessor.inputdata.util;
+package br.com.dataprocessor.util;
 
 import br.com.dataprocessor.type.IdentifierEnum;
 import com.google.common.base.Splitter;
@@ -55,7 +55,6 @@ public class ProcessorUtils {
                 }else {
                     name = name.concat("ç");
                 }
-
             }
 
             ArrayList<String> list = new ArrayList<>();
@@ -83,6 +82,6 @@ public class ProcessorUtils {
             list.add(2, resultSet.get(2));
             list.add(3, name);
             return list;
-
     }
+
 }

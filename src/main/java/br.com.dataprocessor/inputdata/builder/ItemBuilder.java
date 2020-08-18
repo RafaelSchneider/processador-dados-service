@@ -1,7 +1,7 @@
 package br.com.dataprocessor.inputdata.builder;
 
 import br.com.dataprocessor.inputdata.model.Item;
-import br.com.dataprocessor.inputdata.util.ProcessorUtils;
+import br.com.dataprocessor.util.ProcessorUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
