@@ -7,7 +7,7 @@ import br.com.dataprocessor.util.ProcessorUtils;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class VendaModelBuilder {
+public class SalesBuilder {
 
     public static Sale saleBuilder(String data) {
         List<String> resultList = ProcessorUtils.splitLine(data, 'ç');

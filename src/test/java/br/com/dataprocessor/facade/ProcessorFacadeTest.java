@@ -9,7 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import stub.InputDataStub;
-import stub.OutputModelStub;
+import stub.OutputStub;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -38,7 +38,7 @@ public class ProcessorFacadeTest {
         when(dataInputService.extractor(build, file))
                 .thenReturn(InputDataStub.build());
         when(dataOutputService.processOutput(any(), any()))
-                .thenReturn(OutputModelStub.buildOutputModel());
+                .thenReturn(OutputStub.buildOutputModel());
 
         processorFacade.process(file);
     }

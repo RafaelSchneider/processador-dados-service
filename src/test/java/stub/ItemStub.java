@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ItemModelStub {
+public class ItemStub {
 
     public static List<Item> buildItemList(){
         return Arrays.asList(buildItemNumberOne(), buildItemNumberTwo(), buildItemNumberThree());

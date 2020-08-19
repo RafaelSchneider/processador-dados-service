@@ -6,9 +6,9 @@ import br.com.dataprocessor.util.ProcessorUtils;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class VendedorModelBuilder {
+public class SalesmanBuilder {
 
-    public static Salesman vendedorModelBuider(String data){
+    public static Salesman build(String data){
         List<String> resultList = ProcessorUtils.splitLine(data, 'ç');
 
         return Salesman.builder()

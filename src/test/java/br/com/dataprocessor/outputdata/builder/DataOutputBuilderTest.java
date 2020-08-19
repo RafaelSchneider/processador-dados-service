@@ -2,7 +2,7 @@ package br.com.dataprocessor.outputdata.builder;
 
 import org.junit.Assert;
 import org.junit.Test;
-import stub.OutputModelStub;
+import stub.OutputStub;
 
 public class DataOutputBuilderTest {
 
@@ -11,7 +11,7 @@ public class DataOutputBuilderTest {
 
         String out = "3ç3ç2çJonelson";
 
-        Assert.assertTrue(DataOutputBuilder.buildStringToSave(OutputModelStub.buildOutputModel()).equals(out));
+        Assert.assertTrue(DataOutputBuilder.buildStringToSave(OutputStub.buildOutputModel()).equals(out));
 
     }
 }

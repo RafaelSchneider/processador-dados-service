@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 import stub.InputDataStub;
-import stub.OutputModelStub;
+import stub.OutputStub;
 import stub.SaleStub;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,7 +31,7 @@ public class SalesServiceTest {
 
     @Test
     public void shouldReturnBiggestSale(){
-        OutputData outputData = OutputModelStub.buildOutputModel();
+        OutputData outputData = OutputStub.buildOutputModel();
         OutputData outputDataReceived = salesService.getBiggestSale(SaleStub.buildListSaleOFFile())
                 .apply(outputData);
 

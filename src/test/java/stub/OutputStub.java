@@ -2,7 +2,7 @@ package stub;
 
 import br.com.dataprocessor.outputdata.model.OutputData;
 
-public class OutputModelStub {
+public class OutputStub {
 
     public static OutputData buildOutputModel(){
         return OutputData.builder()

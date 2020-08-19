@@ -1,6 +1,6 @@
 package br.com.dataprocessor.service;
 
-import br.com.dataprocessor.inputdata.builder.VendaModelBuilder;
+import br.com.dataprocessor.inputdata.builder.SalesBuilder;
 import br.com.dataprocessor.inputdata.model.InputData;
 import br.com.dataprocessor.inputdata.model.Sale;
 import br.com.dataprocessor.outputdata.model.OutputData;
@@ -18,7 +18,7 @@ public class SalesService {
             if (data.startsWith(IdentifierEnum.SALE.identifier)) {
                     inputData
                         .getSales()
-                        .add(VendaModelBuilder.saleBuilder(data));
+                        .add(SalesBuilder.saleBuilder(data));
             }
             return inputData;
         };

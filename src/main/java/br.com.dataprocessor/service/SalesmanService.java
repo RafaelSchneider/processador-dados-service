@@ -1,6 +1,6 @@
 package br.com.dataprocessor.service;
 
-import br.com.dataprocessor.inputdata.builder.VendedorModelBuilder;
+import br.com.dataprocessor.inputdata.builder.SalesmanBuilder;
 import br.com.dataprocessor.inputdata.model.InputData;
 import br.com.dataprocessor.inputdata.model.Sale;
 import br.com.dataprocessor.outputdata.model.OutputData;
@@ -12,13 +12,13 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public class SalesmanService {
-
+    
     public Function<InputData, InputData> extractSalesman(String data){
         return (InputData inputData) -> {
             if (data.startsWith(IdentifierEnum.SALESMAN.identifier)){
                 inputData
                         .getSalesmen()
-                        .add(VendedorModelBuilder.vendedorModelBuider(data));
+                        .add(SalesmanBuilder.build(data));
             }
             return inputData;
         };

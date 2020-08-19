@@ -25,8 +25,6 @@ public class ProcessorFacade {
 		this.outputData = new OutputData();
 	}
 
-
-
 	public void process(String file){
 		dataInputService.clearList(inputData);
 		extractInputData(file)
@@ -54,8 +52,11 @@ public class ProcessorFacade {
 	}
 
 	private Function<OutputData, OutputData> saveOutputData(){
-		return (OutputData outputData)->
-				dataOutputService.save(outputData);
+		return (OutputData outputData)-> {
+			logger.info("Saving... " + outputData);
+			dataOutputService.save(outputData);
+			return outputData;
+		};
 	}
 }
  

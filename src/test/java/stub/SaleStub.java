@@ -16,7 +16,7 @@ public class SaleStub {
         return Sale.builder()
                 .idSale(1L)
                 .total(new BigDecimal(34.00))
-                .items(ItemModelStub.buildItemList())
+                .items(ItemStub.buildItemList())
                 .salesmanName("Inerina")
                 .build();
     }
@@ -25,7 +25,7 @@ public class SaleStub {
         return Sale.builder()
                 .idSale(2L)
                 .total(new BigDecimal(32.00))
-                .items(Arrays.asList(ItemModelStub.buildItemNumberTwo(), ItemModelStub.buildItemNumberOne()))
+                .items(Arrays.asList(ItemStub.buildItemNumberTwo(), ItemStub.buildItemNumberOne()))
                 .salesmanName("Jadilson")
                 .build();
     }
@@ -34,7 +34,7 @@ public class SaleStub {
         return Sale.builder()
                 .idSale(3L)
                 .total(new BigDecimal(12.00))
-                .items(Arrays.asList(ItemModelStub.buildItemNumberTwo()))
+                .items(Arrays.asList(ItemStub.buildItemNumberTwo()))
                 .salesmanName("Jonelson")
                 .build();
     }
@@ -43,13 +43,13 @@ public class SaleStub {
         List<Sale> sales = new ArrayList<>();
         sales.add(Sale.builder()
                 .idSale(4l)
-                .items(ItemModelStub.buildItemListOfSale04())
+                .items(ItemStub.buildItemListOfSale04())
                 .salesmanName("Laudelino")
                 .total(BigDecimal.ZERO)
                 .build());
         sales.add(Sale.builder()
                 .idSale(5l)
-                .items(ItemModelStub.buildItemListOfSale05())
+                .items(ItemStub.buildItemListOfSale05())
                 .salesmanName("Jonelson II")
                 .total(BigDecimal.TEN)
                 .build());

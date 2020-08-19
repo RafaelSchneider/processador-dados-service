@@ -37,16 +37,17 @@ public class ProcessorUtils {
 
         if (dataSplited.get(0).equals(IdentifierEnum.SALESMAN.identifier) ||
                 dataSplited.get(0).equals(IdentifierEnum.CUSTOMER.identifier)){
-            newList = validateSalesmanCustomerNames(dataSplited, SALESMAN_CUSTOMER_INDEX_NAME);
+            newList = validateSalesmanCustomerNames(dataSplited);
         }
 
         if (dataSplited.get(0).equals(IdentifierEnum.SALE.identifier)){
-            newList = validateSalesmanNameInSale(dataSplited, SALESMAN_INDEX_NAME_IN_SALE);
+            newList = validateSalesmanNameInSale(dataSplited);
         }
         return (newList.isEmpty()) ? dataSplited : newList;
     }
 
-    private static  List<String> validateSalesmanCustomerNames(List<String> resultSet, int index){
+    private static  List<String> validateSalesmanCustomerNames(List<String> resultSet){
+            int index = SALESMAN_CUSTOMER_INDEX_NAME;
             String name = "";
             while (index <= resultSet.size()-2) {
                 name = name.concat(resultSet.get(index ++));
@@ -65,7 +66,9 @@ public class ProcessorUtils {
             return list;
 
     }
-        private static  List<String> validateSalesmanNameInSale(List<String> resultSet, int index){
+
+    private static  List<String> validateSalesmanNameInSale(List<String> resultSet){
+            int index = SALESMAN_INDEX_NAME_IN_SALE;
             String name = "";
             while (index <= resultSet.size()-1) {
                 name = name.concat(resultSet.get(index ++));

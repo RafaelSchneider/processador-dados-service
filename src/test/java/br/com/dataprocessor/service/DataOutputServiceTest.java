@@ -8,7 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import stub.InputDataStub;
-import stub.OutputModelStub;
+import stub.OutputStub;
 import stub.SaleStub;
 
 import java.util.function.UnaryOperator;
@@ -35,11 +35,11 @@ public class DataOutputServiceTest {
 
         when(salesmanService.getWorstSalesman(SaleStub.buildListSaleOFFile())).thenReturn(unaryOperatorMock());
 
-        dataOutputService.processOutput(OutputModelStub.buildOutputModel(), InputDataStub.build());
+        dataOutputService.processOutput(OutputStub.buildOutputModel(), InputDataStub.build());
 
     }
 
     private UnaryOperator<OutputData> unaryOperatorMock(){
-        return (OutputData outputData) -> OutputModelStub.buildOutputModel();
+        return (OutputData outputData) -> OutputStub.buildOutputModel();
     }
 }

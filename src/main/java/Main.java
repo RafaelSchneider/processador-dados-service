@@ -16,6 +16,7 @@ public class Main {
 
         try {
             WatchService watchService = FileSystems.getDefault().newWatchService();
+
             Starter starter = new Starter();
             starter.start();
 

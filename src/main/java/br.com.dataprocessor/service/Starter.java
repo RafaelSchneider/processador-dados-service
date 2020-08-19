@@ -8,16 +8,15 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class Starter {
 
-    private static final Integer THREADS = 2;
-
     public void start(){
 
-        ThreadPoolExecutor executor =
-                (ThreadPoolExecutor) Executors.newFixedThreadPool(THREADS);
+        int threads = Runtime.getRuntime().availableProcessors();
 
+        ThreadPoolExecutor executor =
+                (ThreadPoolExecutor) Executors.newFixedThreadPool(threads-1);
         DataExtractor.listAllFiles().forEach(file-> {
             ProcessorFacade processor = new ProcessorFacade();
-            executor.execute(() -> {
+            executor.submit(() -> {
                 processor.process(file);
             });
         });
